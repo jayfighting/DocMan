@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LD.DocMan.Domain.Common
 {
-    public class AuditableEntity
+    public abstract class AuditableEntity : Entity
     {
         public string CreatedByName { get; set; }
         public Guid CreatedByUserId { get; set; }

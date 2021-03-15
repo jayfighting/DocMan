@@ -7,7 +7,7 @@ namespace LD.DocMan.Domain.Entities
 {
     public class DocumentType : AuditableEntity
     {
-        public Guid DocumentTypeId { get; set; }
+        // public Guid DocumentTypeId { get; set; }
         public string Name { get; set; }
         public int OrderId { get; set; }
         public bool Active { get; set; }

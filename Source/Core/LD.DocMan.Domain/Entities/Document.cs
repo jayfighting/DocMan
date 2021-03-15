@@ -7,7 +7,8 @@ namespace LD.DocMan.Domain.Entities
 {
     public class Document : AuditableEntity
     {
-        public Guid DocumentId { get; set; }
+        //Use the ID from base
+        // public Guid DocumentId { get; set; }
         public string LoanNumber { get; set; }
         public int BorrowerNumber { get; set; }
         public string Name { get; set; }

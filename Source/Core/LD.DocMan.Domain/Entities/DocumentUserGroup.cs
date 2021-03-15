@@ -7,7 +7,7 @@ namespace LD.DocMan.Domain.Entities
 {
     public class DocumentUserGroup : AuditableEntity
     {
-        public Guid UserGroupId { get; set; }
+        // public Guid UserGroupId { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
     }
