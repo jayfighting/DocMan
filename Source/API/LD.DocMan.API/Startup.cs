@@ -8,10 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LD.DocMan.API.Application.Behaviors;
 using LD.DocMan.Application;
 using LD.DocMan.Application.Contracts.Persistence;
 using LD.DocMan.Persistence;
 using LD.DocMan.Persistence.Repositories;
+using MediatR;
 
 namespace LD.DocMan.API
 {
@@ -33,6 +35,9 @@ namespace LD.DocMan.API
             services.AddScoped<IDocumentUserGroupRepository, DocumentUserGroupRepository>();
 
             services.AddControllers();
+            services.AddMediatR(typeof(Startup));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
 
             services.AddCors(options =>
             {
