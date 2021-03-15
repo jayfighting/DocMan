@@ -31,7 +31,7 @@ namespace LD.DocMan.Application.Features.DocumentUserGroups.Commands.CreateDocum
             }
             var documentUserGroup = _mapper.Map<DocumentUserGroup>(request);
             documentUserGroup = await _documentUserGroupRepository.AddAsync(documentUserGroup);
-            return documentUserGroup.UserGroupId;
+            return documentUserGroup.Id;
         }
     }
 }

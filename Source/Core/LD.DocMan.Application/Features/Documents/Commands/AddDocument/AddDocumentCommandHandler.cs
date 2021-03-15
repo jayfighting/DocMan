@@ -31,7 +31,8 @@ namespace LD.DocMan.Application.Features.Documents.Commands.CreateDocument
             }
             var document = _mapper.Map<Document>(request);
             document = await _documentRepository.AddAsync(document);
-            return document.DocumentId;
+            return document.Id;
+                 
         }
     }
 }

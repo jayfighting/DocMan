@@ -14,7 +14,7 @@ namespace LD.DocMan.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DocumentCategoryController : ControllerBase
+    public class DocumentCategoryController : BaseController
     {
         private IMediator _mediator;
 
@@ -25,7 +25,8 @@ namespace LD.DocMan.API.Controllers
 
         [HttpGet("all", Name = "GetAllDocumentCategories")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<DocumentCategoryListVM>>> GetAllDocumentTypes()
+        [ProducesResponseType(typeof(List<DocumentCategoryListVM>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllDocumentTypes()
         {
             var documentTypeListDto = await _mediator.Send(new GetDocumentCategoryListQuery());
             return Ok(documentTypeListDto);
@@ -33,14 +34,16 @@ namespace LD.DocMan.API.Controllers
 
         [HttpGet("{id}", Name = "GetDocumentCategoryById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<DocumentCategoryDetailsVM>>> GetDocumentCategoryById(Guid id)
+        [ProducesResponseType(typeof(List<DocumentCategoryListVM>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetDocumentCategoryById(Guid id)
         {
             var getDocumentCategoryDetailsQuery = new GetDocumentCategoryDetailsQuery() { Id = id };
             return Ok(await _mediator.Send(getDocumentCategoryDetailsQuery));
         }
 
         [HttpPost(Name = "AddDocumentCategory")]
-        public async Task<ActionResult<CreateDocumentCategoryResponse>> Create(
+        [ProducesResponseType(typeof(CreateDocumentCategoryResponse), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Create(
             [FromBody] CreateDocumentCategoryCommand createDocumentCategoryCommand)
         {
             var response = await _mediator.Send(createDocumentCategoryCommand);

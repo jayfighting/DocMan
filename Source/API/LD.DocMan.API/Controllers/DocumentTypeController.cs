@@ -14,7 +14,7 @@ namespace LD.DocMan.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DocumentTypeController : ControllerBase
+    public class DocumentTypeController : BaseController
     {
         private readonly IMediator _mediator;
 
@@ -25,21 +25,22 @@ namespace LD.DocMan.API.Controllers
 
         [HttpGet("all", Name = "GetAllDocumentTypes")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<DocumentTypeListVM>>> GetAllDocumentTypes()
+        [ProducesResponseType(typeof(DocumentTypeListVM), 200)]
+        public async Task<IActionResult> GetAllDocumentTypes()
         {
             var documentTypeListDto = await _mediator.Send(new GetDocumentTypeListQuery());
             return Ok(documentTypeListDto);
         }
 
         [HttpGet("{id}", Name = "GetDocumentTypeById")]
-        public async Task<ActionResult<DocumentTypeDetailVM>> GetDocumentTypeById(Guid id)
+        public async Task<IActionResult> GetDocumentTypeById(Guid id)
         {
             var getDocumentTypeDetailQuery = new GetDocumentTypeDetailQuery() {Id = id};
             return Ok(await _mediator.Send(getDocumentTypeDetailQuery));
         }
 
         [HttpPost(Name = "CreateDocumentType")]
-        public async Task<ActionResult<Guid>> Create(
+        public async Task<IActionResult> Create(
             [FromBody] CreateDocumentTypeCommand createDocumentTypeCommand)
         {
             var response = await _mediator.Send(createDocumentTypeCommand);

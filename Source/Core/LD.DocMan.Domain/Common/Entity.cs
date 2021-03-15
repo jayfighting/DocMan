@@ -9,7 +9,7 @@ namespace LD.DocMan.Domain.Common
         private List<INotification> _domainEvents;
         private int? _requestedHashCode;
 
-        public virtual Guid Id { get; protected set; }
+        public virtual Guid Id { get;  set; }
 
         public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
 

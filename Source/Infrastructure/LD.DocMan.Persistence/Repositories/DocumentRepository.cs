@@ -16,7 +16,7 @@ namespace LD.DocMan.Persistence.Repositories
 
         public Task<bool> DocumentTypeExists(Guid documentTypeId)
         {
-            var documentType = _dbContext.DocumentTypes.Any(dt => dt.DocumentTypeId == documentTypeId);
+            var documentType = _dbContext.DocumentTypes.Any(dt => dt.Id == documentTypeId);
             return Task.FromResult(documentType);
         }
     }

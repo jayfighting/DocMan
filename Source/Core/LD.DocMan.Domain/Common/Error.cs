@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using LD.DocMan.Domain.Common;
 
-namespace LD.DocMan.Domain.Errors
+namespace LD.DocMan.Domain.Common
 {
     public sealed class Error : ValueObject
     {

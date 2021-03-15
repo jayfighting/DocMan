@@ -32,7 +32,7 @@ namespace LD.DocMan.Application.Features.DocumentCategories.Commands.CreateDocum
 
             var documentCategory = _mapper.Map<DocumentCategory>(request);
             documentCategory = await _documentCategoryRepository.AddAsync(documentCategory);
-            return documentCategory.DocumentCategoryId;
+            return documentCategory.Id;
         }
     }
 }

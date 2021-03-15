@@ -29,7 +29,7 @@ namespace LD.DocMan.Application.Features.DocumentTypes.Commands.CreateDocumentTy
 
             var documentType = _mapper.Map<Domain.Entities.DocumentType>(request);
             documentType = await _documentTypeRepository.AddAsync(documentType);
-            return documentType.DocumentTypeId;
+            return documentType.Id;
         }
     }
 }
